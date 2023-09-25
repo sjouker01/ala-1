@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link  rel="stylesheet" href="stylefolder\style.css">
+<<<<<<< HEAD
+    <link rel="stylesheet" href="/css/style.css">
+
 </head>
 <body>
 
     <?php 
-       require_once("stylefolder/connecting.php");
+       require_once("stylefolder\conecting.php");
+       require_once("stylefolder\header.php");
 
-       if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    } else {
-        echo "<p>Connected successfully</p>";
-    }
+       
+     require_once("stylefolder\hooter.php");
     ?>
 
     <?php require_once 'stylefolder\inlogen.php'; ?>
