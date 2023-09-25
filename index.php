@@ -6,6 +6,15 @@
     <title>Document</title>
 </head>
 <body>
+    <?php 
+       require_once("stylefolder/connecting.php");
+
+       if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    } else {
+        echo "<p>Connected successfully</p>";
+    }
+    ?>
     
 </body>
 </html>
