@@ -1,7 +1,7 @@
 <?php 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "Welkom01";
 $dbname = "sportenbeweging";
 
 try {
@@ -10,6 +10,10 @@ try {
     echo $e->getMessage();
 }
 
-
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} else {
+    echo "<p>Connected successfully</p>";
+}
 
 ?>
