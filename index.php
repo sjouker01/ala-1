@@ -7,6 +7,17 @@
     <link  rel="stylesheet" href="stylefolder\style.css">
 </head>
 <body>
+
+    <?php 
+       require_once("stylefolder/connecting.php");
+
+       if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    } else {
+        echo "<p>Connected successfully</p>";
+    }
+    ?>
+
     <?php require_once 'stylefolder\inlogen.php'; ?>
     <h2>Inloggen</h2>
     <form action="login.php" method="post">
@@ -14,5 +25,6 @@
         Wachtwoord: <input type="password" name="wachtwoord"><br>
         <input type="submit" value="Inloggen">
     </form>
+
 </body>
 </html>
