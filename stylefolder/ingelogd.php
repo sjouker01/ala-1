@@ -1,19 +1,10 @@
+<link rel="stylesheet" href="/css/admin.css">
+
+
 <?php
 
 
-// ik heb dit gedaan omdat ik een wachtwoord heb op mijn database
-// Eerste require proberen
-if (require_once('stylefolder\conecting.php')) {
-    // De eerste require is geslaagd, voer hier je code uit voor pagina 1
-} else {
-    // De eerste require is mislukt, probeer de tweede require
-    if (require_once('stylefolder\conn.php')) {
-        // De tweede require is geslaagd, voer hier je code uit voor pagina 2
-    } else {
-        // Beide requires zijn mislukt, geef een foutmelding weer
-        die("Kan geen van beide pagina's includen.");
-    }
-}
+require_once("stylefolder\mainconn.php");
 
 
 
@@ -32,16 +23,19 @@ $username = $_SESSION["username"];
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Persoonlijke Pagina</title>
+    <title> persoonlijke pagina</title>
 </head>
 <body>
+    <main>
     <h2>Welkom, <?php echo $username; ?></h2>
+
+
     <!-- Voeg extra inhoud toe aan de persoonlijke pagina zoals gewenst. -->
     <p>Dit is uw persoonlijke pagina. Voeg hier extra inhoud toe.</p>
-
+<!-- dit pagina word de pagina om persoonlijke gegevens te veranderen  -->
 
     <a href="http://localhost/GitHub/ala-1/index.php">back</a>
-
+    </main>
 </body>
 </html>
 
