@@ -1,8 +1,6 @@
-
 <?php
-   require_once('stylefolder\mainconn.php');
-
-?>
+    require_once("stylefolder\conecting.php");
+    ?>
 
 
 <!DOCTYPE html>
