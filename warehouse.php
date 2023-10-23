@@ -11,7 +11,7 @@
 
    require_once("stylefolder\header.php");
    require_once("stylefolder\zoeken.php");
-   require_once('stylefolder\mainconn.php');
+   require_once("stylefolder\conecting.php");
 
  
 

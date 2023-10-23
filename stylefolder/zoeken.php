@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php 
-    require_once("stylefolder\mainconn.php");
+require_once("stylefolder\conecting.php");
     // dit pagina is voor de warehouse om te zoeken tusse catogorien en zoekbalk
 
     
