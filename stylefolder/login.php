@@ -14,7 +14,7 @@
 </html>
 
 <?php
-require_once("stylefolder\conecting.php");
+require_once("conecting.php");
 
 ?>
 

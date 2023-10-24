@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-require_once("stylefolder\conecting.php");
+    <?php
+  require_once("conecting.php");
+    ?>
 </body>
 </html>

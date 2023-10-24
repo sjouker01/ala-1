@@ -9,7 +9,9 @@
 <body>
 
 <header>
-
+ <?php
+require_once("conecting.php");
+    ?>
 
     <a href="stylefolder\login.php"> login</a>
 
