@@ -13,7 +13,7 @@ try {
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } else {
-    echo "<p>Connected successfully</p>";
+  
 }
 // dit is om connectie te maken met de database
 ?>
