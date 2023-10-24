@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-
+<!-- hier komt header -->
 <header>
  <?php
 require_once("conecting.php");
