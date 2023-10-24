@@ -42,7 +42,7 @@ require_once("conecting.php");
 
     <?php
 
-
+session_start();
   if (isset($_POST['login'])) {
       $username = $_POST['username-inlog'];
       $password = $_POST['password-inlogen'];
@@ -50,20 +50,18 @@ require_once("conecting.php");
       $sql = "SELECT * FROM gebruikers WHERE username = '$username' AND password = '$password'";
       $result = $conn->query($sql);
   
-      if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
-              // ik heb er voor gekozen om dit te doen
-              session_start();
-              $_SESSION['username'] = $username;
-              header("Location: http://localhost/GitHub/ala-1/warehouse.php");
-              exit; // Zorg ervoor dat het script stopt na de redirect
-          }
-      } else {
-          echo "<p>Gebruikersnaam of wachtwoord is onjuist</p>";
+      if ($result->num_rows == 1) {
+        echo "<p>Welkom, $username!</p>";
+        // terug naar index.php na 3 seconden
+        $_SESSION["gebruikersnaam"] = $username;
+        header("refresh:3;url=../index.php");
+        $username = $_SESSION["gebruikersnaam"];
 
-      }
-  }
-  
+    } else {
+        echo "<p>Ongeldige inloggegevens. Probeer opnieuw.</p>";
+    }
+}
+ 
 
 
     ?>
