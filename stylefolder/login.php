@@ -15,7 +15,7 @@
 
 <?php
 require_once("conecting.php");
-
+// hier kan je inloggen
 ?>
 
     

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+  <!-- hier komt footer het heet hooter om dat er een glits is in php dat h niet kan gebruiken ofzo -->
     <?php
   require_once("conecting.php");
     ?>

@@ -3,7 +3,7 @@
 
 <?php
 
-
+// als je ingelogd bent dan kan je naar deze pagina gaan
 require_once("conecting.php");
 
 

@@ -15,10 +15,8 @@ if ($conn->connect_error) {
 } else {
     echo "<p>Connected successfully</p>";
 }
-
+// dit is om connectie te maken met de database
 ?>
 
-<!-- ik heb wel een probleem want ik heb op mijn database een wachtwoord dus ik kan niet zonder ook
- -->
 
 
