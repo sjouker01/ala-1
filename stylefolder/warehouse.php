@@ -59,9 +59,7 @@
         }
 
 
-       } else {
-              echo "geen item id gevonden";
-       }
+       }  
        ?>
     </section>
    <?php
