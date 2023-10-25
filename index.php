@@ -24,7 +24,7 @@
        if (isset($_SESSION['gebruikersnaam'])) {
            $gebruikersnaam = $_SESSION['gebruikersnaam'];
            echo "Welkom, $gebruikersnaam! <br>";
-           echo "<a href='warehouse.php'>overzicht van producten</a> <br>";
+           echo "<a href='stylefolder/warehouse.php'>overzicht van producten</a> <br>";
            echo "<a href='stylefolder/toevoege.php'>product toevoegen</a> <br>";
        } else {
            echo "Welkom, gast!";
@@ -34,7 +34,7 @@
     // hier worden mensen verwelkomt en kunnen ze inloggen  
      require_once("stylefolder\hooter.php");
     ?>
-
+<a href="/stylefolder/warehouse.php"></a>
     <?php
     
     
