@@ -25,7 +25,8 @@ $row = $result->fetch_assoc();
 
 
 
-$conn->close();
+
+
 
 
 ?>
@@ -50,5 +51,51 @@ $conn->close();
     <?php else: ?>
         <p>Product niet gevonden</p>
     <?php endif; ?>
+    <?php if (isset($row1)): ?>
+        <h1><?php echo $product_naam; ?></h1><br>
+        <p>Lener: <?php echo $lenerNaam; ?></p>
+        <p>Tijdsduur: <?php echo $tijdsduur; ?></p>
+        <p>Aantal uitgeleend: <?php echo $aantal; ?></p>
+        
+        <!-- Voeg andere productinformatie toe zoals afbeeldingen, beoordelingen, etc. -->
+    <?php else: ?>
+        <p>Product niet gevonden</p>
+    <?php endif;
+    
+$product_id = $_GET['itemID'];
+
+// Stap 1: Haal de naam van het product op uit de 'items' tabel
+$sql1 = "SELECT NaamVanHetItem FROM items WHERE ItemID = $product_id";
+$result1 = $conn->query($sql1);
+
+if ($result1->num_rows > 0) {
+    $row1 = $result1->fetch_assoc();
+    $product_naam = $row1['NaamVanHetItem'];
+
+    // Stap 2: Gebruik de naam van het product om informatie uit de 'itemusers' tabel te halen
+    $sql2 = "SELECT * FROM itemusers WHERE product = '$product_naam'";
+    $result2 = $conn->query($sql2);
+
+    if ($result2->num_rows > 0) {
+        echo "<h1>$product_naam</h1>";
+        echo "<h2>Leners:</h2>";
+
+        while ($row2 = $result2->fetch_assoc()) {
+            $lenerNaam = $row2['naam'];
+            $tijdsduur = $row2['duur'];
+            $aantal = $row2['hoeveelheid'];
+            echo "<p>Lener: $lenerNaam, Tijdsduur: $tijdsduur, Aantal: $aantal</p>";
+        }
+    } else {
+        echo "Niemand leent dit item op dit moment";
+    }
+} else {
+    echo "Fout bij het vinden van het product";
+    header("refresh:1;url=../warehouse.php");
+}?>
+    
+
+
+
 </body>
 </html>
