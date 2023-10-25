@@ -34,7 +34,7 @@
     // hier worden mensen verwelkomt en kunnen ze inloggen  
      require_once("stylefolder\hooter.php");
     ?>
-<a href="/stylefolder/warehouse.php"></a>
+
     <?php
     
     
