@@ -16,29 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `gebruikers`
+-- Table structure for table `itemusers`
 --
 
-DROP TABLE IF EXISTS `gebruikers`;
+DROP TABLE IF EXISTS `itemusers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `gebruikers` (
-  `id` int NOT NULL,
-  `username` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `itemusers` (
+  `idItemUsers` int NOT NULL AUTO_INCREMENT,
+  `naam` varchar(45) NOT NULL,
+  `achternaam` varchar(45) DEFAULT NULL,
+  `studentnummer` varchar(45) DEFAULT NULL,
+  `duur` datetime DEFAULT NULL,
+  `product` varchar(45) DEFAULT NULL,
+  `hoeveelheid` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idItemUsers`,`naam`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `gebruikers`
+-- Dumping data for table `itemusers`
 --
 
-LOCK TABLES `gebruikers` WRITE;
-/*!40000 ALTER TABLE `gebruikers` DISABLE KEYS */;
-INSERT INTO `gebruikers` VALUES (1,'admin','admin');
-/*!40000 ALTER TABLE `gebruikers` ENABLE KEYS */;
+LOCK TABLES `itemusers` WRITE;
+/*!40000 ALTER TABLE `itemusers` DISABLE KEYS */;
+INSERT INTO `itemusers` VALUES (1,'sjouk','jonker','12345','2024-09-11 00:00:00','voetbal','25'),(2,'sjouk','jonker','125780','2023-10-26 00:00:00','voetbal','10'),(3,'tim','test','12345','2023-12-25 00:00:00','voetbal','10');
+/*!40000 ALTER TABLE `itemusers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
