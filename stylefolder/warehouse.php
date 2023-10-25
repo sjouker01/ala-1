@@ -10,11 +10,8 @@
 
 <?php 
 
-   require_once("stylefolder\header.php");
-   require_once("stylefolder\zoeken.php");
-   require_once("stylefolder\conecting.php");
-
- 
+ require_once("header.php");
+require_once("conecting.php"); 
  
    ?>
      <section class="item-grid">
@@ -31,7 +28,7 @@
             echo "aantalbeschikbaar: " . $row['AantalBeschikbaar'] . "<br>";
             echo "catorgie: " . $row['Categorie'] . "<br>";
             echo "<img class='item-img' src='" . $row['afbeeldingslocatie'] . "' alt='Afbeelding'>";
-            echo "<a href='./stylefolder/confirm_reservation.php?itemID=" . $row['ItemID'] . "'>Details</a>"; // Voeg de link toe naar de detailpagina
+            echo "<a href='confirm_reservation.php?itemID=" . $row['ItemID'] . "'>Details</a>"; // Voeg de link toe naar de detailpagina
             echo "</section>";
 
            }
@@ -53,7 +50,7 @@
                 echo "aantalbeschikbaar: " . $row['AantalBeschikbaar'] . "<br>";
                 echo "catorgie: " . $row['Categorie'] . "<br>";
                 echo "<img class='item-img' src='" . $row['afbeeldingslocatie'] . "' alt='Afbeelding'>";
-                echo "<a href='./stylefolder/confirm_reservation.php?itemID=" . $row['ItemID'] . "'>Details</a>"; // Voeg de link toe naar de detailpagina
+                echo "<a href='confirm_reservation.php?itemID=" . $row['ItemID'] . "'>Details</a>"; // Voeg de link toe naar de detailpagina
                 echo "</section>";
             }
         }
@@ -71,7 +68,7 @@
 
    // dit pagina is om de producten te laten zien // dus hier komt alle producten en zo
 
-    require_once("stylefolder\hooter.php");
+    require_once("hooter.php");
  
  
  ?>

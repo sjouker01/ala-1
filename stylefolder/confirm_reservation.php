@@ -36,8 +36,9 @@ $conn->close();
 </head>
 <body>
     <?php if (isset($row)): ?>
-        <!-- <img src="<?php echo $row['afbeeldingslocatie']; ?>" alt="Afbeelding"> -->
-        <h1><?php echo $row['NaamVanHetItem']; ?></h1>
+  
+        <h1><?php echo $row['NaamVanHetItem']; ?></h1><br>
+        <img src="<?php echo $row['afbeeldingslocatie']; ?>" alt="Afbeelding">
         <p>Beschrijving: <?php echo $row['Beschrijving']; ?></p>
         <p> aantalbeschikbaar <?php echo $row['AantalBeschikbaar']; ?></p>
         <p> catorgie <?php echo $row['Categorie']; ?></p>
