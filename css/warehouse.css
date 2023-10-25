@@ -1,0 +1,17 @@
+.item-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Spacing between items */
+}
+
+.item-section {
+    width: calc(33.33% - 20px); /* 3 items per row with spacing */
+    border: 1px solid #ccc; /* Border around each item */
+    padding: 10px;
+    text-align: center;
+}
+
+.item-img {
+    max-width: 100%;
+    height: auto;
+}
