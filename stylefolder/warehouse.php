@@ -50,8 +50,10 @@ require_once("conecting.php");
                 echo "aantalbeschikbaar: " . $row['AantalBeschikbaar'] . "<br>";
                 echo "catorgie: " . $row['Categorie'] . "<br>";
                 echo "<img class='item-img' src='" . $row['afbeeldingslocatie'] . "' alt='Afbeelding'>";
-                echo "<a href='confirm_reservation.php?itemID=" . $row['ItemID'] . "'>Details</a>"; // Voeg de link toe naar de detailpagina
+                echo "<a href='confirm_reservation.php?itemID=" . $row['ItemID'] . "'>Details</a>";
                 echo "</section>";
+                echo "<a href='detailpagina.php?id=" . $row['iditemuser'] . "'>" . $row['naam'] . " " . $row['achternaam'] . "</a><br>";
+
             }
         }
 
