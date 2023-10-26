@@ -54,7 +54,7 @@ session_start();
         echo "<p>Welkom, $username!</p>";
         // terug naar index.php na 3 seconden
         $_SESSION["gebruikersnaam"] = $username;
-        header("refresh:3;url=../index.php");
+        header("refresh:2;url=../index.php");
         $username = $_SESSION["gebruikersnaam"];
 
     } else {

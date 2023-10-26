@@ -1,139 +1,83 @@
-<?php session_start(); // Start de sessie
 
-if (isset($_SESSION["gebruikersnaam"])) {
-    $gebruikersnaam = $_SESSION["gebruikersnaam"];
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Huidige gebruikersnaam en wachtwoord ophalen uit het formulier.
-        $huidigeGebruikersnaam = $_POST['huidige_gebruikersnaam'];
-        $huidigWachtwoord = $_POST['huidig_wachtwoord'];
+<?php
+session_start();
 
-        // Valideer de huidige gebruikersnaam en wachtwoord. Voer hier eventuele validatie en beveiliging uit.
-
-        // Controleer of de huidige gebruikersnaam en wachtwoord overeenkomen met de ingelogde gebruiker.
-        if ($huidigeGebruikersnaam === $gebruikersnaam && $huidigWachtwoord === $huidigWachtwoordVanDeDatabase) {
-            // Huidige gebruikersnaam en wachtwoord zijn correct.
-
-            // Nieuwe gebruikersnaam en wachtwoord ophalen uit het formulier.
-            $nieuweGebruikersnaam = $_POST['nieuwe_gebruikersnaam'];
-            $nieuwWachtwoord = $_POST['nieuw_wachtwoord'];
-
-            // Hier kun je validatie en beveiliging toevoegen.
-
-            // Maak een verbinding met de database
-            require_once("connecting.php");
-
-            // SQL-query om de gebruikersnaam en het wachtwoord te wijzigen (zonder wachtwoord hashen)
-            $sql = "UPDATE gebruikers SET username = '$nieuweGebruikersnaam', password = '$nieuwWachtwoord' WHERE username = '$gebruikersnaam'";
-
-            if ($conn->query($sql) === TRUE) {
-                echo "Gebruikersnaam en wachtwoord zijn succesvol gewijzigd!";
-                session_destroy();
-                
-                // Je kunt hier verdere acties ondernemen, bijvoorbeeld door de gebruiker opnieuw in te laten loggen.
-            } else {
-                echo "Fout bij het wijzigen van de gegevens: " . $conn->error;
-            }
-
-            // Sluit de databaseverbinding.
-            $conn->close();
-        } else {
-            echo "Huidige gebruikersnaam en/of wachtwoord is incorrect.";
-        }
-    }
+if (isset($_SESSION['gebruikersnaam'])) {
+    $gebruikersnaam = $_SESSION['gebruikersnaam'];
+    echo "<h1>Welkom, $gebruikersnaam!</h1>";
+} else {
+    echo "U bent niet ingelogd.";
 }
+
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h1>Registreren</h1>
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Valideer en beveilig gebruikersinvoer hier.
-
-        // Maak een verbinding met de database.
-        require_once("conecting.php");
-
-        // Gebruikersnaam en wachtwoord ophalen van het formulier.
-        $gebruikersnaam = $_POST["gebruikersnaam"];
-        $wachtwoord = $_POST["wachtwoord"];
-
-        // Controleer of de gebruiker al bestaat.
-        $check_sql = "SELECT * FROM gebruikers WHERE username = '$gebruikersnaam'";
-        $result = $conn->query($check_sql);
-
-        if ($result->num_rows > 0) {
-            echo "Deze gebruiker bestaat al.";
-        } else {
-            // Gebruiker bestaat nog niet, voeg deze toe aan de database.
-            $insert_sql = "INSERT INTO gebruikers (username, password) VALUES ('$gebruikersnaam', '$wachtwoord')";
-            if ($conn->query($insert_sql) === TRUE) {
-                echo "Gebruiker is toegevoegd.";
-            } else {
-                echo "Fout bij toevoegen van gebruiker: " . $conn->error;
-            }
-        }
-
-        // Verbinding met de database sluiten.
-        $conn->close();
-    }
-    ?>
-
-    <form method="POST">
-        Gebruikersnaam: <input type="text" name="gebruikersnaam" required><br>
-        Wachtwoord: <input type="password" name="wachtwoord" required><br>
-        <input type="submit" value="Registreren">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gebruikersgegevens bijwerken</title>
+</head>
+<body>
+    <h1>Gebruikersgegevens bijwerken</h1>
+    <form method="POST" action="">
+        <label for="username">Nieuwe gebruikersnaam:</label>
+        <input type="text" name="new_username" id="new_username" required><br>
+        <label for="password">Nieuw wachtwoord:</label>
+        <input type="password" name="new_password" id="new_password" required><br>
+        <input type="submit" value="Bijwerken">
     </form>
+</body>
+</html>
+
+<?php
+require_once "conecting.php";
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $newUsername = $_POST['new_username'];
+    $newPassword = $_POST['new_password'];
+
+    // Controleer of de gebruikersnaam al bestaat in de database
+    $checkExistingUserQuery = "SELECT id FROM gebruikers WHERE username = ?";
+    $checkStmt = $conn->prepare($checkExistingUserQuery);
+    $checkStmt->bind_param("s", $newUsername);
+    $checkStmt->execute();
+    $checkStmt->store_result();
+
+    if ($checkStmt->num_rows > 0) {
+        // De gebruikersnaam bestaat al, voer een UPDATE-query uit
+        $updateQuery = "UPDATE gebruikers SET password = ? WHERE username = ?";
+        $updateStmt = $conn->prepare($updateQuery);
+        $updateStmt->bind_param("ss", $newPassword, $newUsername);
+        $updateStmt->execute();
+        $updateStmt->close();
+        echo "Gebruikersgegevens bijgewerkt.";
+    } else {
+        // De gebruikersnaam bestaat niet, voer een INSERT-query uit
+        $insertQuery = "INSERT INTO gebruikers (username, password) VALUES (?, ?)";
+        $insertStmt = $conn->prepare($insertQuery);
+        $insertStmt->bind_param("ss", $newUsername, $newPassword);
+        $insertStmt->execute();
+        $insertStmt->close();
+        echo "Nieuwe gebruiker toegevoegd.";
+    }
+
+    $checkStmt->close();
+    header("refresh:1;url=../index.php");
+    exit();
+}
+
+$conn->close();
+?>
+<a href="?logout=1">uitloggen</a>
+<a href="../index.php">back</a>
+<?php
 
 
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header("refresh:1;url=../index.php");
+    exit();
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+?>
 

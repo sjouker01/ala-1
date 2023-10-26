@@ -29,6 +29,7 @@
         echo "<a href='stylefolder/toevoege.php'>Product toevoegen</a> <br>";
     } else {
         echo "Welkom, gast!";
+        echo "als iet wil doen moet je inlooggen <br>";
     }
     
        
