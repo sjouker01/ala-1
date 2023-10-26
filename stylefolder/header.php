@@ -65,11 +65,12 @@
 <body>
 <header>
     <nav>
-        <ul>
-            <li><a href="persoonlijk.php">Persoonlijk</a></li>
+        <ul> 
+            <li><a href="./index.php">Home</a></li>
+            <li><a href="personlijkpagina.php">Persoonlijk</a></li>
             <li><a href="warehouse.php">Warehouse</a></li>
             <li><a href="toevoegen.php">Toevoegen</a></li>
-            <li><a href="home.php">Home</a></li>
+           
         </ul>
     </nav>
 
