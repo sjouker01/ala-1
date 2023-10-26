@@ -66,4 +66,5 @@ if (isset($_POST['toevoegen'])) {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
+
 ?>

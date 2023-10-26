@@ -20,21 +20,23 @@
 
        
        require_once("stylefolder\header.php");
+    //  hier kijkt die naar of er iemand al ingelogd is of niet zo wel dan laat die de naam van de gene zien en zo niet laat die gast zien
+    // hier word ook als je ingelogt bent de 2 keuzens geshowd 1tje om de producte te zien en de ander de toevoegpagina
+    if (isset($_SESSION['gebruikersnaam'])) {
+        $gebruikersnaam = $_SESSION['gebruikersnaam'];
+        echo "Welkom, <a href='stylefolder/personlijkpagina.php'>$gebruikersnaam</a>! <br>";
+        echo "<a href='stylefolder/warehouse.php'>Overzicht van producten</a> <br>";
+        echo "<a href='stylefolder/toevoege.php'>Product toevoegen</a> <br>";
+    } else {
+        echo "Welkom, gast!";
+    }
     
-       if (isset($_SESSION['gebruikersnaam'])) {
-           $gebruikersnaam = $_SESSION['gebruikersnaam'];
-           echo "Welkom, $gebruikersnaam! <br>";
-           echo "<a href='stylefolder/warehouse.php'>overzicht van producten</a> <br>";
-           echo "<a href='stylefolder/toevoege.php'>product toevoegen</a> <br>";
-       } else {
-           echo "Welkom, gast!";
-       }
        
     //    welkom pagina 
     // hier worden mensen verwelkomt en kunnen ze inloggen  
      require_once("stylefolder\hooter.php");
     ?>
-<a href="/stylefolder/warehouse.php"></a>
+
     <?php
     
     

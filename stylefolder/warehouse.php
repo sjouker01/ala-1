@@ -70,7 +70,7 @@ require_once("conecting.php");
 
     require_once("hooter.php");
  
- 
+ $conn->close();
  ?>
 
 <a href="/GitHub/ala-1/stylefolder/producten.php">test</a>
