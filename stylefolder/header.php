@@ -15,9 +15,15 @@
         }
 
         header {
-            background-color: #333;
+            background-color: rgba(200,0,0, 0.5);
             color: #fff;
             padding: 10px 0;
+            display:flex;
+            align-items:center;
+            height: 6vh;
+        }
+        nav{
+            margin-left:20px;
         }
 
         nav ul {
@@ -37,7 +43,8 @@
         }
 
         .search-bar {
-            margin-top: 10px;
+            margin-left: auto;
+            margin-right: 20px
         }
 
         .search-bar input[type="text"] {
@@ -60,16 +67,17 @@
             text-decoration: none;
             color: #fff;
         }
-    </style> -->
+
 </head>
 <body>
 <header>
     <nav>
-        <ul>
-            <li><a href="persoonlijk.php">Persoonlijk</a></li>
+        <ul> 
+            <li><a href="./index.php">Home</a></li>
+            <li><a href="personlijkpagina.php">Persoonlijk</a></li>
             <li><a href="warehouse.php">Warehouse</a></li>
             <li><a href="toevoegen.php">Toevoegen</a></li>
-            <li><a href="home.php">Home</a></li>
+           
         </ul>
     </nav>
 
