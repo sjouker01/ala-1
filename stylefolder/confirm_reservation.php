@@ -40,13 +40,14 @@ if (isset($_GET['itemID'])) {
 
 
 require_once("conecting.php");
-$sql = "SELECT naam, achternaam, studentnummer, duur, product, hoeveelheid FROM itemusers";
+$sql = "SELECT  idItemUsers, naam, achternaam, studentnummer, duur, product, hoeveelheid FROM itemusers";
 $result = $conn->query($sql);
 
-if($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
         echo "<section class='item-section'>";
-        echo "<a href='terugbrengen.php'>" . $row['naam'] . " " . $row['achternaam'] . "</a><br>";
+        // Create a link that goes to a personalized return page based on the item
+        echo "<a href='terugbrengen.php?item_id=" . $row['idItemUsers'] . "'>" . $row['naam'] . " " . $row['achternaam'] . "</a><br>";
         echo "studentnummer: " . $row['studentnummer'] . "<br>";
         echo "duur: " . $row['duur'] . "<br>";
         echo "product: " . $row['product'] . "<br>";
@@ -56,6 +57,7 @@ if($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
+
 
    
 ?>

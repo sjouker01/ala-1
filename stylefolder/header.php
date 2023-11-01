@@ -9,7 +9,7 @@
 <body>
 <!-- hier komt header -->
 
-<style>
+<!-- <style>
         body {
             font-family: Arial, sans-serif;
         }
@@ -67,10 +67,7 @@
             text-decoration: none;
             color: #fff;
         }
-        a:hover{
-            color: rgba(10, 10, 10);
-        }
-    </style>
+
 </head>
 <body>
 <header>
