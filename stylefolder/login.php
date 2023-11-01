@@ -43,24 +43,30 @@ require_once("conecting.php");
     <?php
 
 session_start();
-  if (isset($_POST['login'])) {
-      $username = $_POST['username-inlog'];
-      $password = $_POST['password-inlogen'];
-  
-      $sql = "SELECT * FROM gebruikers WHERE username = '$username' AND password = '$password'";
-      $result = $conn->query($sql);
-  
-      if ($result->num_rows == 1) {
-        echo "<p>Welkom, $username!</p>";
-        // terug naar index.php na 3 seconden
-        $_SESSION["gebruikersnaam"] = $username;
-        header("refresh:2;url=../index.php");
-        $username = $_SESSION["gebruikersnaam"];
+if (isset($_POST['login'])) {
+    $username = $_POST['username-inlog'];
+    $password = $_POST['password-inlogen'];
 
+    $sql = "SELECT id, username FROM gebruikers WHERE username = '$username' AND password = '$password'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+        $id = $row['id'];
+        $username = $row['username'];
+
+        // Inloggen gelukt
+        $_SESSION["gebruikersnaam"] = $username;
+        $_SESSION["gebruikers_id"] = $id; // Sla de gebruikers-ID op in de sessie
+        echo "<p>Welkom, $username!</p";
+
+        // Terug naar index.php na 3 seconden
+        header("refresh:1;url=index.php");
     } else {
         echo "<p>Ongeldige inloggegevens. Probeer opnieuw.</p>";
     }
 }
+
 
  
 
