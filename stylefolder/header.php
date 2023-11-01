@@ -9,7 +9,7 @@
 <body>
 <!-- hier komt header -->
 
-<style>
+<!-- <style>
         body {
             font-family: Arial, sans-serif;
         }
@@ -60,7 +60,7 @@
             text-decoration: none;
             color: #fff;
         }
-    </style>
+    </style> -->
 </head>
 <body>
 <header>
